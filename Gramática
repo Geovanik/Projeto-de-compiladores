@@ -1,11 +1,10 @@
-Gramática:
-
-S::= <var> | <num> | <op> | <op2> | <condicao> | <laco>
-<var>::= a<var2>|e<var2>|i<var2>|o<var2>|u<var2>
-<var2>::= a<var2>|e<var2>|i<var2>|o<var2>|u<var2>| & 
-<num>::= 1<num>|2<num>|3<num>|4<num>|5<num>|6<num>|7<num>|8<num>|9<num>| 0<num>|0 |1 |2 |3 |4 |5 |6 |7 |8 |9
-<op>::= + | - | / | * |  = | 
-<op2>::= == | > | < | //comparacoes
-<condicao> ::= if exp<S> | else <S>
-<laco>: := while exp <S>
+<S>::=<var> | <num> | <op> | <op2> | <condicao> | <laco> | <reservadas>
+<condicao> ::= if <exp> <S> | else <S>
+<laco>::=   while <exp> <S>
+<var>::=    a<var2>|e<var2>|i<var2>|o<var2>|u<var2>
+<var2>::=   a<var2>|e<var2>|i<var2>|o<var2>|u<var2>|''
+<num>::=    1<num>|2<num>|3<num>|4<num>|5<num>|6<num>|7<num>|8<num>|9<num>| 0<num>|''
+<op>::=      '+' | '-' | '/' | '*' |  '=' 
+<op2>::=    '==' | '>' | '<' 
+<reservadas>::= main | return | break | continue | <var> sizeof <var>
 <exp>::= <var> <op2> <var> | <var> <op2> <num>| <num> <op2> <var>
