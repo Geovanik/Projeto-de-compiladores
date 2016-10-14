@@ -24,15 +24,27 @@ def leituraGramatica (arq):
 			tokens = producoes[k][producoes[k].find(" ")+1:producoes[k].find("<")]
 			tokens = tokens.replace("'", "")
 			tokens = tokens.replace(" ", "")
-			for c in tokens:
-				if c != "\n" and c != "\r":
-					try:
-						if matriz[0][c] is None:
-							pass
-					except:
-						matriz[0][c] = []
-						indice.append(c)
-
+			if "'" in producoes[k]:
+				tokens = producoes[k].replace("'", "")
+				tokens = tokens.replace(" ", "")
+				tokens = tokens.replace("\n", "")
+				for c in tokens:
+					if c != "\n" and c != "\r":
+						try:
+							if matriz[0][c] is None:
+								pass
+						except:
+							matriz[0][c] = []
+							indice.append(c)
+			else:
+				for c in tokens:
+					if c != "\n" and c != "\r":
+						try:
+							if matriz[0][c] is None:
+								pass
+						except:
+							matriz[0][c] = []
+							indice.append(c)
 def preencheTabela (arq):
 	global matriz
 	global contEstado
@@ -41,48 +53,82 @@ def preencheTabela (arq):
 	lines = arq.readlines()#le tds as linhas da gramatica
 	matriz.append({})
 	for line in lines:
-		cont = 0
+		cont = 1
 		partes = line.split("::=")#separamos a linha em duas partes
 		producoes = partes[1].split("|")#separando as producoes na quantidade de procucoes
 		for k in range(0,len(producoes)):#separando tokens
-			tokens = producoes[k][producoes[k].find(" ")+1:producoes[k].find("<")]
+			estado = None
+			tokens = producoes[k][producoes[k].find(" ")+1:(producoes[k].find("<"))]
 			if "<" in producoes[k] and ">" in producoes[k]:
 				estado = producoes[k][producoes[k].find("<")+1:producoes[k].find(">")]
-			tokens = tokens.replace("'", "")
-			tokens = tokens.replace(" ", "")
 			partes[0] = partes[0].replace("<", "")
 			partes[0] = partes[0].replace(">", "")
 			cont = 1
-			for c in tokens:
-				if c != "\n" and c != "\r":
-					try:
-						matriz[cont][c] = contEstado
-						if partes[0] != estado:
+			criou = 0
+			if "'" in producoes[k]:
+				tokens = producoes[k].replace("'", "")
+				tokens = tokens.replace(" ", "")
+				for c in tokens:
+					if c != "\n" and c != "\r":
+						try:
+							matriz[cont][c].append(contEstado)
+							if partes[0] != estado:
+								cont=contEstado
+								contEstado+=1
+								criou = 1
+						except:
+							matriz.append({})
+							cont-=1
 							contEstado+=1
+							matriz[cont][c] = []
+							matriz[cont][c].append(contEstado)
+							cont=contEstado-1
+							
 							criou = 1
-							cont=contEstado
-					except:
-						matriz.append({})
-						matriz[cont][c] = contEstado
-						contEstado+=1
-						cont=contEstado
-						criou = 1
+			else:
+				tokens = tokens.replace("'", "")
+				tokens = tokens.replace(" ", "")
+				for c in tokens:
+					if c != "\n" and c != "\r":
+						try:
+							matriz[cont][c].append(contEstado)
+							if partes[0] != estado:
+								cont=contEstado
+								contEstado+=1
+								criou = 1
+						except:
+							matriz.append({})
+							if partes[0] != estado:
+								contEstado+=1
+							matriz[cont][c] = []
+							matriz[cont][c].append(contEstado)
+							cont=contEstado-1
+							criou = 1
+				if estado == partes[0]:
+					criou = 0			
 			if criou:
 				matriz.append({})
-				matriz[cont]['*'] = '*'
+				matriz[contEstado]['*'] = []
+				matriz[contEstado]['*'] = '*'
 				estadosFinais.append(contEstado)
+				cont=contEstado-1
 				criou = 0
 		print
 	i = 0
 	b = 1
+	a = 0
+	print "LEN MATRIZ ", len(matriz)
+	print "LEN Indice ", len(indice)
 	for a in range(0, len(matriz)):
+		i = 0
 		for k in range(0, len(indice)):
 			try:
-				print matriz[b][indice[i]], "AUX " + indice[i]
+				print matriz[b][indice[i]], "AUX " + indice[i], "B ", b
 			except:
 				pass			
 			i = i + 1
 		b = b + 1
+		print "A ", a
 	print estadosFinais
 		
 def imprime():
@@ -118,6 +164,6 @@ preencheTabela (arq)
 
 arq.close
 
-print indice
+#print indice
 
 #imprime()
