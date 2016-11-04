@@ -87,13 +87,13 @@ def preencheTabela (arq):
 								cont=contEstado
 								criou = 1
 						except:
-							matriz.append({}) #talvez retirar
+							#matriz.append({}) #talvez retirar
 							cont-=1
 							contEstado+=1
 							matriz[cont][c] = []
 							matriz[cont][c].append(contEstado)
 							cont=contEstado-1
-							criou = 1
+							#criou = 1
 				if producoes[k] == "''\n":
 				    cont=contEstado;
 				    criou = 1;
@@ -111,14 +111,14 @@ def preencheTabela (arq):
 					    cont=aux
 				            criou = 1;
 				    except:
-					matriz.append({}) #talvez retirar
+					#matriz.append({}) #talvez retirar
 					if partes[0] != estado:
 					    cont=aux
 				            criou=1
 					matriz[cont][c] = []
 					matriz[cont][c].append(aux)
 		    	         	cont=aux;
-					criou = 1
+					#criou = 1
 				else: 
 					tokens = tokens.replace("'", "")
 					tokens = tokens.replace(" ", "")
@@ -130,7 +130,7 @@ def preencheTabela (arq):
 									cont=contEstado
 									contEstado+=1
 									criou = 1
-								criou = 1;
+								#criou = 1;
 							except:
 								matriz.append({})
 								if partes[0] != estado:
@@ -140,10 +140,12 @@ def preencheTabela (arq):
 								matriz[cont][c] = []
 								matriz[cont][c].append(contEstado)
 								cont=contEstado-1
-								criou = 1
+								#criou = 1
 					if estado == partes[0]:
 						criou = 0			
 			if criou:
+                                print(producoes[k]);
+				print("TAM ", len(matriz));
 				matriz.append({})
 				estadosFinais.append(contEstado)
 				criou = 0
@@ -373,3 +375,5 @@ with open(csvfile, 'w') as csvfile:
 		writer.writerow([char_i,char_f,char_e,char_l,char_s,char_w,char_h,char_a,char_o,char_u,char_1,char_2,char_3,char_4,char_5,char_6,char_7,char_8,char_9,char_0,char_ma,char_me,char_di,char_ve,char_ig,char_mm,char_mn,char_m,char_n,char_r,char_t,char_b,char_k,char_c,char_z]);
 
 imprime()
+
+print(estadosFinais);
