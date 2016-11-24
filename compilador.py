@@ -208,6 +208,45 @@ def detMat():
 		cont+=1
 		if cont > 46:
 			existeInd=0
+
+def verificaInt(lista):
+    pos = []
+    for aux in lista:
+        try:
+            pos.append(int(aux));
+        except:
+            pass #estado final
+    return pos
+
+def leituraFonte():
+    global matriz
+    pos = 0
+    pos_aux = 0
+    b = '';
+    arq = open("exprog","r")
+    lines = arq.readlines()#le tds as linhas da gramatica
+    for line in lines:
+        pos_aux = 0
+        if line != "\n":
+            line = line.replace("\n", "")
+            line = line.replace("\r", "")
+            line = line.replace("\t", "")
+            for k in range(0, len(line)):
+                for c in line[k]:
+                    if c != " ":
+		            try:
+                                pos = verificaInt(matriz[pos_aux][c]);
+                                pos_aux = pos[0];
+		                if matriz[pos_aux][c] == "'X'":
+		                    print("CARACTER INVALIDO");
+		                else:
+		                    print("CARACTER VALIDO ", c); 
+		            except: #erro escrita
+		                print("Nao existe ", matriz[pos_aux][c]);
+                                return False
+	            else:
+                        pos_aux = 0;                
+    arq.close()
 		
 def imprime():
 	global matriz
