@@ -222,32 +222,44 @@ def leituraFonte():
     global matriz
     pos = 0
     pos_aux = 0
+    cont_linhas = 0
     b = '';
     arq = open("exprog","r")
     lines = arq.readlines()#le tds as linhas da gramatica
     for line in lines:
         pos_aux = 0
+        cont_linhas = cont_linhas + 1
+        cont_split_linha = 0
+        aux_linha = None;
         if line != "\n":
+            cont_componentes = 0 #contador para auxiliar navegacao nos componentes da linha atual
+            cont_split_linha = 0
             line = line.replace("\n", "")
             line = line.replace("\r", "")
             line = line.replace("\t", "")
-            for k in range(0, len(line)):
+            aux_linha = line.split(" ");
+            for k in range (0, len(line)):
+                cont = 0
                 for c in line[k]:
                     if c != " ":
 		            try:
-                                pos = verificaInt(matriz[pos_aux][c]);
+                                pos = verificaInt(matriz[pos_aux][c],pos_aux,c);
                                 pos_aux = pos[0];
-		                if matriz[pos_aux][c] == "'X'":
-		                    print("CARACTER INVALIDO");
-		                else:
-		                    print("CARACTER VALIDO ", c); 
 		            except: #erro escrita
+                                gravaFita(1, cont_linhas, aux_linha[cont_split_linha]);
 		                print("Nao existe ", matriz[pos_aux][c]);
-                                return False
-	            else:
-                        pos_aux = 0;                
+                                #return False
+                                cont_split_linha+=1
+	            else: #chamar a funcao que grava na fita
+                        #estado 1 de erro
+                        gravaFita(pos_aux, cont_linhas, aux_linha[cont_split_linha]);
+                        cont_componentes+=1                     
+			pos_aux = 0;
+                        cont_split_linha+=1
+                    cont+=1
+                cont_componentes+=1                                
     arq.close()
-		
+
 def imprime():
 	global matriz
 	a = ""#usado na impressao de valores 
