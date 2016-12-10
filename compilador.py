@@ -238,7 +238,7 @@ def leituraFonte():
             line = line.replace("\r", "")
             line = line.replace("\t", "")
             aux_linha = line.split(" ");
-            for k in range (0, len(line)):
+            for k in range(0, len(line)):
                 cont = 0
                 for c in line[k]:
                     if c != " ":
@@ -246,19 +246,31 @@ def leituraFonte():
                                 pos = verificaInt(matriz[pos_aux][c],pos_aux,c);
                                 pos_aux = pos[0];
 		            except: #erro escrita
-                                gravaFita(1, cont_linhas, aux_linha[cont_split_linha]);
-		                print("Nao existe ", matriz[pos_aux][c]);
+                                gravaFita(1, cont_linhas, aux_linha[cont_componentes]);
+                                print("Nao existe ", matriz[pos_aux][c]);
+                                while c != " ":
+                                    k+=1;
+                                    c = line[k];
+                                    print("K ", k);
                                 #return False
-                                cont_split_linha+=1
 	            else: #chamar a funcao que grava na fita
                         #estado 1 de erro
-                        gravaFita(pos_aux, cont_linhas, aux_linha[cont_split_linha]);
-                        cont_componentes+=1                     
+                        gravaFita(pos_aux, cont_linhas, aux_linha[cont_split_linha]);                      
 			pos_aux = 0;
                         cont_split_linha+=1
                     cont+=1
-                cont_componentes+=1                                
+                    cont_componentes+=1
+            gravaFita(pos_aux, cont_linhas, aux_linha[cont_split_linha]);
+                                
     arq.close()
+
+def gravaFita(num_estado, linha, palavra):
+    global lista
+    with open("fita_saida.txt", "a") as arq:
+    	aux = lista[num_estado];
+        str_fita = str(num_estado) + ";" + palavra + ";" + aux.rotulo + ";" + str(linha) + ";\n"
+        arq.write(str_fita);
+    arq.close();
 
 def imprime():
 	global matriz
