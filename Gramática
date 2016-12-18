@@ -6,5 +6,5 @@
 <num>::=    1<num>|2<num>|3<num>|4<num>|5<num>|6<num>|7<num>|8<num>|9<num>| 0<num>|''
 <op>::=      '+' | '-' | '/' | '*' |  '=' 
 <op2>::=    '==' | '>' | '<' 
-<reservadas>::= main | return | break | continue | <var> sizeof <var>
+<reservadas>::= main | return | break | continue | sizeof <var> <var>
 <exp>::= <var> <op2> <var> | <var> <op2> <num>| <num> <op2> <var>
