@@ -105,7 +105,7 @@ estado47 = Tab_simbolos_47
 
 lista.append(estado0)#posicao 0
 lista.append(estado1)#posicao 1 ERRO
-lista.append(estado0)#posicao 2
+lista.append(estado0)#posicao 0
 lista.append(estado3)#estado correto com suas informacoes
 lista.append(estado0)#posicao 0
 lista.append(estado0)#posicao 0
@@ -226,6 +226,7 @@ def preencheTabela (arq):
 			cont = 0
 			criou = 0
 			if "'" in producoes[k]:
+				#print("PRODUCOES IF", producoes[k]);
 				tokens = producoes[k].replace("'", "")
 				tokens = tokens.replace(" ", "")
 				for c in tokens:
@@ -318,21 +319,9 @@ def preencheTabela (arq):
 				matriz.append({})
 				estadosFinais.append(contEstado)
 				criou = 0
-		print
 	i = 0
 	b = 0
 	a = 0
-	#for a in range(0, len(matriz)):
-	#	i = 0
-	#	for k in range(0, len(indice)):
-	#		try:
-	#			print matriz[b][indice[i]], "AUX " + indice[i], "B ", b
-	#		except:
-	#			pass			
-	#		i = i + 1
-	#		#print
-	#	b = b + 1
-	#print estadosFinais
 
 def detMat():
 	global contEstado
@@ -404,6 +393,7 @@ def leituraFonte():
             line = line.replace("\n", "")
             line = line.replace("\r", "")
             line = line.replace("\t", "")
+            #line = line.replace(" \n", "");
             aux_linha = line.split(" ");
             for k in range(0, len(line)):
                 cont = 0
@@ -413,7 +403,7 @@ def leituraFonte():
                                 pos = verificaInt(matriz[pos_aux][c],pos_aux,c);
                                 pos_aux = pos[0];
 		            except: #erro escrita
-                                while c != " ":
+                                while c != " ": #le ate terminar a palavra
                                     k+=1;
                                     try:
                                         c = line[k];
@@ -426,15 +416,18 @@ def leituraFonte():
                         if aux_linha[cont_componentes] != "": #espaco fim da linha
                             if pos_aux not in estadosFinais:
                                 pos_aux = 1;
+                                print('Erro na linha %d' % (cont_linhas) + ' na palavra  %s' % (aux_linha[cont_componentes]));
                             gravaFita(pos_aux, cont_linhas, aux_linha[cont_componentes]);
-                            cont_componentes+=1                     
+                            cont_componentes+=1                       
 			    pos_aux = 0;
                             cont_split_linha+=1
                     cont+=1
             if pos_aux not in estadosFinais:
                 pos_aux = 1;
+                print('Erro na linha %d' % (cont_linhas) + ' na palavra  %s' % (aux_linha[cont_componentes]));
             if aux_linha[cont_componentes] != "" and pos_aux != 0: #espaco fim da linha
                 gravaFita(pos_aux, cont_linhas, aux_linha[cont_componentes]); 
+                                
     arq.close()
 
 def gravaFita(num_estado, linha, palavra):
@@ -501,9 +494,9 @@ while i < contEstado:
 	    intermediaria[i][j] = []
 	    intermediaria[i][j].append("X")
     i+=1;
-
 detMat()
 
+print("ESTADO FINAIS ", estadosFinais);
 arq = open("fita_saida.txt","w")
 arq.close
 intermediaria = matriz
@@ -521,4 +514,3 @@ while i < contEstado:
     i+=1;
 
 leituraFonte()
-print("ESTADO FINAIS ", estadosFinais);
