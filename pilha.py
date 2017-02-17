@@ -22,3 +22,10 @@ print p.desempilha(),
 print p.desempilha(),
 print p.desempilha(),
 print p.desempilha(), 
+
+def shift():
+	
+	#pega o elemento da primeira linha mais o estado para onde vai. Ex foto
+	#p.empilha(#elemento lido)
+	
+	#retira da lista a elemento empilhado
