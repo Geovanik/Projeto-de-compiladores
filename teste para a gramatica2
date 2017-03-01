@@ -1,0 +1,18 @@
+main
+
+u = 2
+a = 5
+
+while a > u
+  e = 5
+  a = e / 2
+  a = a + 1
+  
+if a < u
+  i = i * 2
+  continue
+  
+sizeof a u
+
+return
+  
