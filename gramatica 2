@@ -1,0 +1,13 @@
+"start symbol" = <S>
+{letra} = [a]+[e]+[i]+[o]+[u]
+
+var = {letra}+
+num = {Digit}+             
+
+<S>::= <op> | <laco> | <op2> | <condicao> | <reservadas>
+<valores>::= var | num
+<op>::= <valores> '+' <valores> | <valores> '-' <valores> | <valores> '*' <valores> |<valores> '/' <valores>
+<op2>::= <valores> '==' <valores> | <valores> '<' <valores> | <valores> '>' <valores> | <valores> '=' <valores>
+<laco>::= while <op2>
+<condicao>::= if <op2>
+<reservadas>::= main | return | break | continue | sizeof <valores> <valores>
