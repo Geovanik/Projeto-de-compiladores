@@ -1,21 +1,3 @@
 main
 
-a = 0
-aeio = 10
-
-while a < 20
-	a = a+2 
-
-continue
-
-if a == 20
-	aui = a
-	aui = aui/2
-	aui = aui-1
-else
-	ao = 120
-
-if aui sizeof a 
-	return ao
-else
-	return aui
+a = 2 + 3
