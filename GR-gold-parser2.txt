@@ -1,0 +1,2215 @@
+﻿============================================================
+GOLD Parser Builder
+Version 5.2.0.
+============================================================
+
+
+========================================
+Terminals
+========================================
+
+ 0      (EOF)
+ 1      (Error)
+ 2      Whitespace
+ 3      '-'
+ 4      '*'
+ 5      '/'
+ 6      '+'
+ 7      '<'
+ 8      '='
+ 9      '=='
+ 10     '>'
+ 11     '0'
+ 12     '1'
+ 13     '2'
+ 14     '3'
+ 15     '4'
+ 16     '5'
+ 17     '6'
+ 18     '7'
+ 19     '8'
+ 20     '9'
+ 21     a
+ 22     break
+ 23     continue
+ 24     e
+ 25     else
+ 26     i
+ 27     if
+ 28     main
+ 29     o
+ 30     return
+ 31     sizeof
+ 32     u
+ 33     while
+
+
+========================================
+Nonterminals
+========================================
+
+34      <condicao>
+35      <exp1>
+36      <exp2>
+37      <laco>
+38      <num>
+39      <op>
+40      <op2>
+41      <operando>
+42      <S>
+43      <var>
+
+
+========================================
+Rules
+========================================
+
+0       <S> ::= main <exp1>
+1       <S> ::= continue
+2       <S> ::= sizeof
+3       <exp1> ::= <operando>
+4       <exp1> ::= <var> '=' <operando> <op> <operando>
+5       <exp1> ::= <condicao>
+6       <exp1> ::= <laco>
+7       <exp1> ::= 
+8       <exp2> ::= <var> <op2> <var>
+9       <condicao> ::= if <exp2> <S> break else <S> break
+10      <laco> ::= while <exp2> <exp1> return
+11      <operando> ::= <var>
+12      <operando> ::= <num>
+13      <var> ::= a <var>
+14      <var> ::= e <var>
+15      <var> ::= i <var>
+16      <var> ::= o <var>
+17      <var> ::= u <var>
+18      <var> ::= a
+19      <var> ::= e
+20      <var> ::= i
+21      <var> ::= o
+22      <var> ::= u
+23      <num> ::= '1' <num>
+24      <num> ::= '2' <num>
+25      <num> ::= '3' <num>
+26      <num> ::= '4' <num>
+27      <num> ::= '5' <num>
+28      <num> ::= '6' <num>
+29      <num> ::= '7' <num>
+30      <num> ::= '8' <num>
+31      <num> ::= '9' <num>
+32      <num> ::= '0' <num>
+33      <num> ::= '1'
+34      <num> ::= '2'
+35      <num> ::= '3'
+36      <num> ::= '4'
+37      <num> ::= '5'
+38      <num> ::= '6'
+39      <num> ::= '7'
+40      <num> ::= '8'
+41      <num> ::= '9'
+42      <num> ::= '0'
+43      <op> ::= '+'
+44      <op> ::= '-'
+45      <op> ::= '/'
+46      <op> ::= '*'
+47      <op2> ::= '=='
+48      <op2> ::= '<'
+49      <op2> ::= '>'
+
+
+========================================
+DFA States
+========================================
+
+State 0
+        Goto 1       &09 .. &0D, &20, &85, &A0, &1680, &180E, &2000 .. &200A, &2026, &2028, &2029, &202F, &205F, &3000
+        Goto 2       -
+        Goto 3       *
+        Goto 4       /
+        Goto 5       +
+        Goto 6       <
+        Goto 7       >
+        Goto 8       0
+        Goto 9       1
+        Goto 10      2
+        Goto 11      3
+        Goto 12      4
+        Goto 13      5
+        Goto 14      6
+        Goto 15      7
+        Goto 16      8
+        Goto 17      9
+        Goto 18      Aa
+        Goto 19      Bb
+        Goto 24      Cc
+        Goto 32      Mm
+        Goto 36      Oo
+        Goto 37      Rr
+        Goto 43      Ss
+        Goto 49      Uu
+        Goto 50      Ww
+        Goto 55      =
+        Goto 57      Ee
+        Goto 61      Ii
+
+
+State 1
+        Goto 1       &09 .. &0D, &20, &85, &A0, &1680, &180E, &2000 .. &200A, &2026, &2028, &2029, &202F, &205F, &3000
+        Accept Whitespace
+
+
+State 2
+        Accept '-'
+
+
+State 3
+        Accept '*'
+
+
+State 4
+        Accept '/'
+
+
+State 5
+        Accept '+'
+
+
+State 6
+        Accept '<'
+
+
+State 7
+        Accept '>'
+
+
+State 8
+        Accept '0'
+
+
+State 9
+        Accept '1'
+
+
+State 10
+        Accept '2'
+
+
+State 11
+        Accept '3'
+
+
+State 12
+        Accept '4'
+
+
+State 13
+        Accept '5'
+
+
+State 14
+        Accept '6'
+
+
+State 15
+        Accept '7'
+
+
+State 16
+        Accept '8'
+
+
+State 17
+        Accept '9'
+
+
+State 18
+        Accept a
+
+
+State 19
+        Goto 20      Rr
+
+
+State 20
+        Goto 21      Ee
+
+
+State 21
+        Goto 22      Aa
+
+
+State 22
+        Goto 23      Kk
+
+
+State 23
+        Accept break
+
+
+State 24
+        Goto 25      Oo
+
+
+State 25
+        Goto 26      Nn
+
+
+State 26
+        Goto 27      Tt
+
+
+State 27
+        Goto 28      Ii
+
+
+State 28
+        Goto 29      Nn
+
+
+State 29
+        Goto 30      Uu
+
+
+State 30
+        Goto 31      Ee
+
+
+State 31
+        Accept continue
+
+
+State 32
+        Goto 33      Aa
+
+
+State 33
+        Goto 34      Ii
+
+
+State 34
+        Goto 35      Nn
+
+
+State 35
+        Accept main
+
+
+State 36
+        Accept o
+
+
+State 37
+        Goto 38      Ee
+
+
+State 38
+        Goto 39      Tt
+
+
+State 39
+        Goto 40      Uu
+
+
+State 40
+        Goto 41      Rr
+
+
+State 41
+        Goto 42      Nn
+
+
+State 42
+        Accept return
+
+
+State 43
+        Goto 44      Ii
+
+
+State 44
+        Goto 45      Zz
+
+
+State 45
+        Goto 46      Ee
+
+
+State 46
+        Goto 47      Oo
+
+
+State 47
+        Goto 48      Ff
+
+
+State 48
+        Accept sizeof
+
+
+State 49
+        Accept u
+
+
+State 50
+        Goto 51      Hh
+
+
+State 51
+        Goto 52      Ii
+
+
+State 52
+        Goto 53      Ll
+
+
+State 53
+        Goto 54      Ee
+
+
+State 54
+        Accept while
+
+
+State 55
+        Goto 56      =
+        Accept '='
+
+
+State 56
+        Accept '=='
+
+
+State 57
+        Goto 58      Ll
+        Accept e
+
+
+State 58
+        Goto 59      Ss
+
+
+State 59
+        Goto 60      Ee
+
+
+State 60
+        Accept else
+
+
+State 61
+        Goto 62      Ff
+        Accept i
+
+
+State 62
+        Accept if
+
+
+
+
+========================================
+LALR States
+========================================
+
+State 0
+        <S'> ::= _ <S> (EOF)                                       <S'> ::= ^ <S> (EOF)
+        <S> ::= _ main <exp1>                                      <S> ::= ^ main <exp1>
+        <S> ::= _ continue                                         <S> ::= ^ continue
+        <S> ::= _ sizeof                                           <S> ::= ^ sizeof
+
+        continue s 1
+        main s 2
+        sizeof s 3
+        <S> g 4
+
+
+State 1
+        Prior States: 0, 41, 63
+
+        <S> ::= continue _                                         <S> ::= continue ^
+
+        (EOF) r 1
+        break r 1
+
+
+State 2
+        Prior States: 0, 41, 63
+
+        <S> ::= main _ <exp1>                                      <S> ::= main ^ <exp1>
+        <exp1> ::= _ <operando>                                    <exp1> ::= ^ <operando>
+        <exp1> ::= _ <var> '=' <operando> <op> <operando>          <exp1> ::= ^ <var> '=' <operando> <op> <operando>
+        <exp1> ::= _ <condicao>                                    <exp1> ::= ^ <condicao>
+        <exp1> ::= _ <laco>                                        <exp1> ::= ^ <laco>
+        <exp1> ::= _                                               <exp1> ::= ^
+        <condicao> ::= _ if <exp2> <S> break else <S> break        <condicao> ::= ^ if <exp2> <S> break else <S> break
+        <laco> ::= _ while <exp2> <exp1> return                    <laco> ::= ^ while <exp2> <exp1> return
+        <operando> ::= _ <var>                                     <operando> ::= ^ <var>
+        <operando> ::= _ <num>                                     <operando> ::= ^ <num>
+        <var> ::= _ a <var>                                        <var> ::= ^ a <var>
+        <var> ::= _ e <var>                                        <var> ::= ^ e <var>
+        <var> ::= _ i <var>                                        <var> ::= ^ i <var>
+        <var> ::= _ o <var>                                        <var> ::= ^ o <var>
+        <var> ::= _ u <var>                                        <var> ::= ^ u <var>
+        <var> ::= _ a                                              <var> ::= ^ a
+        <var> ::= _ e                                              <var> ::= ^ e
+        <var> ::= _ i                                              <var> ::= ^ i
+        <var> ::= _ o                                              <var> ::= ^ o
+        <var> ::= _ u                                              <var> ::= ^ u
+        <num> ::= _ '1' <num>                                      <num> ::= ^ '1' <num>
+        <num> ::= _ '2' <num>                                      <num> ::= ^ '2' <num>
+        <num> ::= _ '3' <num>                                      <num> ::= ^ '3' <num>
+        <num> ::= _ '4' <num>                                      <num> ::= ^ '4' <num>
+        <num> ::= _ '5' <num>                                      <num> ::= ^ '5' <num>
+        <num> ::= _ '6' <num>                                      <num> ::= ^ '6' <num>
+        <num> ::= _ '7' <num>                                      <num> ::= ^ '7' <num>
+        <num> ::= _ '8' <num>                                      <num> ::= ^ '8' <num>
+        <num> ::= _ '9' <num>                                      <num> ::= ^ '9' <num>
+        <num> ::= _ '0' <num>                                      <num> ::= ^ '0' <num>
+        <num> ::= _ '1'                                            <num> ::= ^ '1'
+        <num> ::= _ '2'                                            <num> ::= ^ '2'
+        <num> ::= _ '3'                                            <num> ::= ^ '3'
+        <num> ::= _ '4'                                            <num> ::= ^ '4'
+        <num> ::= _ '5'                                            <num> ::= ^ '5'
+        <num> ::= _ '6'                                            <num> ::= ^ '6'
+        <num> ::= _ '7'                                            <num> ::= ^ '7'
+        <num> ::= _ '8'                                            <num> ::= ^ '8'
+        <num> ::= _ '9'                                            <num> ::= ^ '9'
+        <num> ::= _ '0'                                            <num> ::= ^ '0'
+
+        '0' s 5
+        '1' s 6
+        '2' s 7
+        '3' s 8
+        '4' s 9
+        '5' s 10
+        '6' s 11
+        '7' s 12
+        '8' s 13
+        '9' s 14
+        a s 15
+        e s 16
+        i s 17
+        if s 18
+        o s 19
+        u s 20
+        while s 21
+        <condicao> g 22
+        <exp1> g 23
+        <laco> g 24
+        <num> g 25
+        <operando> g 26
+        <var> g 27
+        (EOF) r 7
+        break r 7
+
+
+State 3
+        Prior States: 0, 41, 63
+
+        <S> ::= sizeof _                                           <S> ::= sizeof ^
+
+        (EOF) r 2
+        break r 2
+
+
+State 4
+        Prior States: 0
+
+        <S'> ::= <S> _ (EOF)                                       <S'> ::= <S> ^ (EOF)
+
+        (EOF) a
+
+
+State 5
+        Prior States: 2, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 45, 46, 62
+
+        <num> ::= '0' _ <num>                                      <num> ::= '0' ^ <num>
+        <num> ::= '0' _                                            <num> ::= '0' ^
+        <num> ::= _ '1' <num>                                      <num> ::= ^ '1' <num>
+        <num> ::= _ '2' <num>                                      <num> ::= ^ '2' <num>
+        <num> ::= _ '3' <num>                                      <num> ::= ^ '3' <num>
+        <num> ::= _ '4' <num>                                      <num> ::= ^ '4' <num>
+        <num> ::= _ '5' <num>                                      <num> ::= ^ '5' <num>
+        <num> ::= _ '6' <num>                                      <num> ::= ^ '6' <num>
+        <num> ::= _ '7' <num>                                      <num> ::= ^ '7' <num>
+        <num> ::= _ '8' <num>                                      <num> ::= ^ '8' <num>
+        <num> ::= _ '9' <num>                                      <num> ::= ^ '9' <num>
+        <num> ::= _ '0' <num>                                      <num> ::= ^ '0' <num>
+        <num> ::= _ '1'                                            <num> ::= ^ '1'
+        <num> ::= _ '2'                                            <num> ::= ^ '2'
+        <num> ::= _ '3'                                            <num> ::= ^ '3'
+        <num> ::= _ '4'                                            <num> ::= ^ '4'
+        <num> ::= _ '5'                                            <num> ::= ^ '5'
+        <num> ::= _ '6'                                            <num> ::= ^ '6'
+        <num> ::= _ '7'                                            <num> ::= ^ '7'
+        <num> ::= _ '8'                                            <num> ::= ^ '8'
+        <num> ::= _ '9'                                            <num> ::= ^ '9'
+        <num> ::= _ '0'                                            <num> ::= ^ '0'
+
+        '0' s 5
+        '1' s 6
+        '2' s 7
+        '3' s 8
+        '4' s 9
+        '5' s 10
+        '6' s 11
+        '7' s 12
+        '8' s 13
+        '9' s 14
+        <num> g 28
+        (EOF) r 42
+        '-' r 42
+        '*' r 42
+        '/' r 42
+        '+' r 42
+        break r 42
+        return r 42
+
+
+State 6
+        Prior States: 2, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 45, 46, 62
+
+        <num> ::= '1' _ <num>                                      <num> ::= '1' ^ <num>
+        <num> ::= '1' _                                            <num> ::= '1' ^
+        <num> ::= _ '1' <num>                                      <num> ::= ^ '1' <num>
+        <num> ::= _ '2' <num>                                      <num> ::= ^ '2' <num>
+        <num> ::= _ '3' <num>                                      <num> ::= ^ '3' <num>
+        <num> ::= _ '4' <num>                                      <num> ::= ^ '4' <num>
+        <num> ::= _ '5' <num>                                      <num> ::= ^ '5' <num>
+        <num> ::= _ '6' <num>                                      <num> ::= ^ '6' <num>
+        <num> ::= _ '7' <num>                                      <num> ::= ^ '7' <num>
+        <num> ::= _ '8' <num>                                      <num> ::= ^ '8' <num>
+        <num> ::= _ '9' <num>                                      <num> ::= ^ '9' <num>
+        <num> ::= _ '0' <num>                                      <num> ::= ^ '0' <num>
+        <num> ::= _ '1'                                            <num> ::= ^ '1'
+        <num> ::= _ '2'                                            <num> ::= ^ '2'
+        <num> ::= _ '3'                                            <num> ::= ^ '3'
+        <num> ::= _ '4'                                            <num> ::= ^ '4'
+        <num> ::= _ '5'                                            <num> ::= ^ '5'
+        <num> ::= _ '6'                                            <num> ::= ^ '6'
+        <num> ::= _ '7'                                            <num> ::= ^ '7'
+        <num> ::= _ '8'                                            <num> ::= ^ '8'
+        <num> ::= _ '9'                                            <num> ::= ^ '9'
+        <num> ::= _ '0'                                            <num> ::= ^ '0'
+
+        '0' s 5
+        '1' s 6
+        '2' s 7
+        '3' s 8
+        '4' s 9
+        '5' s 10
+        '6' s 11
+        '7' s 12
+        '8' s 13
+        '9' s 14
+        <num> g 29
+        (EOF) r 33
+        '-' r 33
+        '*' r 33
+        '/' r 33
+        '+' r 33
+        break r 33
+        return r 33
+
+
+State 7
+        Prior States: 2, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 45, 46, 62
+
+        <num> ::= '2' _ <num>                                      <num> ::= '2' ^ <num>
+        <num> ::= '2' _                                            <num> ::= '2' ^
+        <num> ::= _ '1' <num>                                      <num> ::= ^ '1' <num>
+        <num> ::= _ '2' <num>                                      <num> ::= ^ '2' <num>
+        <num> ::= _ '3' <num>                                      <num> ::= ^ '3' <num>
+        <num> ::= _ '4' <num>                                      <num> ::= ^ '4' <num>
+        <num> ::= _ '5' <num>                                      <num> ::= ^ '5' <num>
+        <num> ::= _ '6' <num>                                      <num> ::= ^ '6' <num>
+        <num> ::= _ '7' <num>                                      <num> ::= ^ '7' <num>
+        <num> ::= _ '8' <num>                                      <num> ::= ^ '8' <num>
+        <num> ::= _ '9' <num>                                      <num> ::= ^ '9' <num>
+        <num> ::= _ '0' <num>                                      <num> ::= ^ '0' <num>
+        <num> ::= _ '1'                                            <num> ::= ^ '1'
+        <num> ::= _ '2'                                            <num> ::= ^ '2'
+        <num> ::= _ '3'                                            <num> ::= ^ '3'
+        <num> ::= _ '4'                                            <num> ::= ^ '4'
+        <num> ::= _ '5'                                            <num> ::= ^ '5'
+        <num> ::= _ '6'                                            <num> ::= ^ '6'
+        <num> ::= _ '7'                                            <num> ::= ^ '7'
+        <num> ::= _ '8'                                            <num> ::= ^ '8'
+        <num> ::= _ '9'                                            <num> ::= ^ '9'
+        <num> ::= _ '0'                                            <num> ::= ^ '0'
+
+        '0' s 5
+        '1' s 6
+        '2' s 7
+        '3' s 8
+        '4' s 9
+        '5' s 10
+        '6' s 11
+        '7' s 12
+        '8' s 13
+        '9' s 14
+        <num> g 30
+        (EOF) r 34
+        '-' r 34
+        '*' r 34
+        '/' r 34
+        '+' r 34
+        break r 34
+        return r 34
+
+
+State 8
+        Prior States: 2, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 45, 46, 62
+
+        <num> ::= '3' _ <num>                                      <num> ::= '3' ^ <num>
+        <num> ::= '3' _                                            <num> ::= '3' ^
+        <num> ::= _ '1' <num>                                      <num> ::= ^ '1' <num>
+        <num> ::= _ '2' <num>                                      <num> ::= ^ '2' <num>
+        <num> ::= _ '3' <num>                                      <num> ::= ^ '3' <num>
+        <num> ::= _ '4' <num>                                      <num> ::= ^ '4' <num>
+        <num> ::= _ '5' <num>                                      <num> ::= ^ '5' <num>
+        <num> ::= _ '6' <num>                                      <num> ::= ^ '6' <num>
+        <num> ::= _ '7' <num>                                      <num> ::= ^ '7' <num>
+        <num> ::= _ '8' <num>                                      <num> ::= ^ '8' <num>
+        <num> ::= _ '9' <num>                                      <num> ::= ^ '9' <num>
+        <num> ::= _ '0' <num>                                      <num> ::= ^ '0' <num>
+        <num> ::= _ '1'                                            <num> ::= ^ '1'
+        <num> ::= _ '2'                                            <num> ::= ^ '2'
+        <num> ::= _ '3'                                            <num> ::= ^ '3'
+        <num> ::= _ '4'                                            <num> ::= ^ '4'
+        <num> ::= _ '5'                                            <num> ::= ^ '5'
+        <num> ::= _ '6'                                            <num> ::= ^ '6'
+        <num> ::= _ '7'                                            <num> ::= ^ '7'
+        <num> ::= _ '8'                                            <num> ::= ^ '8'
+        <num> ::= _ '9'                                            <num> ::= ^ '9'
+        <num> ::= _ '0'                                            <num> ::= ^ '0'
+
+        '0' s 5
+        '1' s 6
+        '2' s 7
+        '3' s 8
+        '4' s 9
+        '5' s 10
+        '6' s 11
+        '7' s 12
+        '8' s 13
+        '9' s 14
+        <num> g 31
+        (EOF) r 35
+        '-' r 35
+        '*' r 35
+        '/' r 35
+        '+' r 35
+        break r 35
+        return r 35
+
+
+State 9
+        Prior States: 2, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 45, 46, 62
+
+        <num> ::= '4' _ <num>                                      <num> ::= '4' ^ <num>
+        <num> ::= '4' _                                            <num> ::= '4' ^
+        <num> ::= _ '1' <num>                                      <num> ::= ^ '1' <num>
+        <num> ::= _ '2' <num>                                      <num> ::= ^ '2' <num>
+        <num> ::= _ '3' <num>                                      <num> ::= ^ '3' <num>
+        <num> ::= _ '4' <num>                                      <num> ::= ^ '4' <num>
+        <num> ::= _ '5' <num>                                      <num> ::= ^ '5' <num>
+        <num> ::= _ '6' <num>                                      <num> ::= ^ '6' <num>
+        <num> ::= _ '7' <num>                                      <num> ::= ^ '7' <num>
+        <num> ::= _ '8' <num>                                      <num> ::= ^ '8' <num>
+        <num> ::= _ '9' <num>                                      <num> ::= ^ '9' <num>
+        <num> ::= _ '0' <num>                                      <num> ::= ^ '0' <num>
+        <num> ::= _ '1'                                            <num> ::= ^ '1'
+        <num> ::= _ '2'                                            <num> ::= ^ '2'
+        <num> ::= _ '3'                                            <num> ::= ^ '3'
+        <num> ::= _ '4'                                            <num> ::= ^ '4'
+        <num> ::= _ '5'                                            <num> ::= ^ '5'
+        <num> ::= _ '6'                                            <num> ::= ^ '6'
+        <num> ::= _ '7'                                            <num> ::= ^ '7'
+        <num> ::= _ '8'                                            <num> ::= ^ '8'
+        <num> ::= _ '9'                                            <num> ::= ^ '9'
+        <num> ::= _ '0'                                            <num> ::= ^ '0'
+
+        '0' s 5
+        '1' s 6
+        '2' s 7
+        '3' s 8
+        '4' s 9
+        '5' s 10
+        '6' s 11
+        '7' s 12
+        '8' s 13
+        '9' s 14
+        <num> g 32
+        (EOF) r 36
+        '-' r 36
+        '*' r 36
+        '/' r 36
+        '+' r 36
+        break r 36
+        return r 36
+
+
+State 10
+        Prior States: 2, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 45, 46, 62
+
+        <num> ::= '5' _ <num>                                      <num> ::= '5' ^ <num>
+        <num> ::= '5' _                                            <num> ::= '5' ^
+        <num> ::= _ '1' <num>                                      <num> ::= ^ '1' <num>
+        <num> ::= _ '2' <num>                                      <num> ::= ^ '2' <num>
+        <num> ::= _ '3' <num>                                      <num> ::= ^ '3' <num>
+        <num> ::= _ '4' <num>                                      <num> ::= ^ '4' <num>
+        <num> ::= _ '5' <num>                                      <num> ::= ^ '5' <num>
+        <num> ::= _ '6' <num>                                      <num> ::= ^ '6' <num>
+        <num> ::= _ '7' <num>                                      <num> ::= ^ '7' <num>
+        <num> ::= _ '8' <num>                                      <num> ::= ^ '8' <num>
+        <num> ::= _ '9' <num>                                      <num> ::= ^ '9' <num>
+        <num> ::= _ '0' <num>                                      <num> ::= ^ '0' <num>
+        <num> ::= _ '1'                                            <num> ::= ^ '1'
+        <num> ::= _ '2'                                            <num> ::= ^ '2'
+        <num> ::= _ '3'                                            <num> ::= ^ '3'
+        <num> ::= _ '4'                                            <num> ::= ^ '4'
+        <num> ::= _ '5'                                            <num> ::= ^ '5'
+        <num> ::= _ '6'                                            <num> ::= ^ '6'
+        <num> ::= _ '7'                                            <num> ::= ^ '7'
+        <num> ::= _ '8'                                            <num> ::= ^ '8'
+        <num> ::= _ '9'                                            <num> ::= ^ '9'
+        <num> ::= _ '0'                                            <num> ::= ^ '0'
+
+        '0' s 5
+        '1' s 6
+        '2' s 7
+        '3' s 8
+        '4' s 9
+        '5' s 10
+        '6' s 11
+        '7' s 12
+        '8' s 13
+        '9' s 14
+        <num> g 33
+        (EOF) r 37
+        '-' r 37
+        '*' r 37
+        '/' r 37
+        '+' r 37
+        break r 37
+        return r 37
+
+
+State 11
+        Prior States: 2, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 45, 46, 62
+
+        <num> ::= '6' _ <num>                                      <num> ::= '6' ^ <num>
+        <num> ::= '6' _                                            <num> ::= '6' ^
+        <num> ::= _ '1' <num>                                      <num> ::= ^ '1' <num>
+        <num> ::= _ '2' <num>                                      <num> ::= ^ '2' <num>
+        <num> ::= _ '3' <num>                                      <num> ::= ^ '3' <num>
+        <num> ::= _ '4' <num>                                      <num> ::= ^ '4' <num>
+        <num> ::= _ '5' <num>                                      <num> ::= ^ '5' <num>
+        <num> ::= _ '6' <num>                                      <num> ::= ^ '6' <num>
+        <num> ::= _ '7' <num>                                      <num> ::= ^ '7' <num>
+        <num> ::= _ '8' <num>                                      <num> ::= ^ '8' <num>
+        <num> ::= _ '9' <num>                                      <num> ::= ^ '9' <num>
+        <num> ::= _ '0' <num>                                      <num> ::= ^ '0' <num>
+        <num> ::= _ '1'                                            <num> ::= ^ '1'
+        <num> ::= _ '2'                                            <num> ::= ^ '2'
+        <num> ::= _ '3'                                            <num> ::= ^ '3'
+        <num> ::= _ '4'                                            <num> ::= ^ '4'
+        <num> ::= _ '5'                                            <num> ::= ^ '5'
+        <num> ::= _ '6'                                            <num> ::= ^ '6'
+        <num> ::= _ '7'                                            <num> ::= ^ '7'
+        <num> ::= _ '8'                                            <num> ::= ^ '8'
+        <num> ::= _ '9'                                            <num> ::= ^ '9'
+        <num> ::= _ '0'                                            <num> ::= ^ '0'
+
+        '0' s 5
+        '1' s 6
+        '2' s 7
+        '3' s 8
+        '4' s 9
+        '5' s 10
+        '6' s 11
+        '7' s 12
+        '8' s 13
+        '9' s 14
+        <num> g 34
+        (EOF) r 38
+        '-' r 38
+        '*' r 38
+        '/' r 38
+        '+' r 38
+        break r 38
+        return r 38
+
+
+State 12
+        Prior States: 2, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 45, 46, 62
+
+        <num> ::= '7' _ <num>                                      <num> ::= '7' ^ <num>
+        <num> ::= '7' _                                            <num> ::= '7' ^
+        <num> ::= _ '1' <num>                                      <num> ::= ^ '1' <num>
+        <num> ::= _ '2' <num>                                      <num> ::= ^ '2' <num>
+        <num> ::= _ '3' <num>                                      <num> ::= ^ '3' <num>
+        <num> ::= _ '4' <num>                                      <num> ::= ^ '4' <num>
+        <num> ::= _ '5' <num>                                      <num> ::= ^ '5' <num>
+        <num> ::= _ '6' <num>                                      <num> ::= ^ '6' <num>
+        <num> ::= _ '7' <num>                                      <num> ::= ^ '7' <num>
+        <num> ::= _ '8' <num>                                      <num> ::= ^ '8' <num>
+        <num> ::= _ '9' <num>                                      <num> ::= ^ '9' <num>
+        <num> ::= _ '0' <num>                                      <num> ::= ^ '0' <num>
+        <num> ::= _ '1'                                            <num> ::= ^ '1'
+        <num> ::= _ '2'                                            <num> ::= ^ '2'
+        <num> ::= _ '3'                                            <num> ::= ^ '3'
+        <num> ::= _ '4'                                            <num> ::= ^ '4'
+        <num> ::= _ '5'                                            <num> ::= ^ '5'
+        <num> ::= _ '6'                                            <num> ::= ^ '6'
+        <num> ::= _ '7'                                            <num> ::= ^ '7'
+        <num> ::= _ '8'                                            <num> ::= ^ '8'
+        <num> ::= _ '9'                                            <num> ::= ^ '9'
+        <num> ::= _ '0'                                            <num> ::= ^ '0'
+
+        '0' s 5
+        '1' s 6
+        '2' s 7
+        '3' s 8
+        '4' s 9
+        '5' s 10
+        '6' s 11
+        '7' s 12
+        '8' s 13
+        '9' s 14
+        <num> g 35
+        (EOF) r 39
+        '-' r 39
+        '*' r 39
+        '/' r 39
+        '+' r 39
+        break r 39
+        return r 39
+
+
+State 13
+        Prior States: 2, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 45, 46, 62
+
+        <num> ::= '8' _ <num>                                      <num> ::= '8' ^ <num>
+        <num> ::= '8' _                                            <num> ::= '8' ^
+        <num> ::= _ '1' <num>                                      <num> ::= ^ '1' <num>
+        <num> ::= _ '2' <num>                                      <num> ::= ^ '2' <num>
+        <num> ::= _ '3' <num>                                      <num> ::= ^ '3' <num>
+        <num> ::= _ '4' <num>                                      <num> ::= ^ '4' <num>
+        <num> ::= _ '5' <num>                                      <num> ::= ^ '5' <num>
+        <num> ::= _ '6' <num>                                      <num> ::= ^ '6' <num>
+        <num> ::= _ '7' <num>                                      <num> ::= ^ '7' <num>
+        <num> ::= _ '8' <num>                                      <num> ::= ^ '8' <num>
+        <num> ::= _ '9' <num>                                      <num> ::= ^ '9' <num>
+        <num> ::= _ '0' <num>                                      <num> ::= ^ '0' <num>
+        <num> ::= _ '1'                                            <num> ::= ^ '1'
+        <num> ::= _ '2'                                            <num> ::= ^ '2'
+        <num> ::= _ '3'                                            <num> ::= ^ '3'
+        <num> ::= _ '4'                                            <num> ::= ^ '4'
+        <num> ::= _ '5'                                            <num> ::= ^ '5'
+        <num> ::= _ '6'                                            <num> ::= ^ '6'
+        <num> ::= _ '7'                                            <num> ::= ^ '7'
+        <num> ::= _ '8'                                            <num> ::= ^ '8'
+        <num> ::= _ '9'                                            <num> ::= ^ '9'
+        <num> ::= _ '0'                                            <num> ::= ^ '0'
+
+        '0' s 5
+        '1' s 6
+        '2' s 7
+        '3' s 8
+        '4' s 9
+        '5' s 10
+        '6' s 11
+        '7' s 12
+        '8' s 13
+        '9' s 14
+        <num> g 36
+        (EOF) r 40
+        '-' r 40
+        '*' r 40
+        '/' r 40
+        '+' r 40
+        break r 40
+        return r 40
+
+
+State 14
+        Prior States: 2, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 45, 46, 62
+
+        <num> ::= '9' _ <num>                                      <num> ::= '9' ^ <num>
+        <num> ::= '9' _                                            <num> ::= '9' ^
+        <num> ::= _ '1' <num>                                      <num> ::= ^ '1' <num>
+        <num> ::= _ '2' <num>                                      <num> ::= ^ '2' <num>
+        <num> ::= _ '3' <num>                                      <num> ::= ^ '3' <num>
+        <num> ::= _ '4' <num>                                      <num> ::= ^ '4' <num>
+        <num> ::= _ '5' <num>                                      <num> ::= ^ '5' <num>
+        <num> ::= _ '6' <num>                                      <num> ::= ^ '6' <num>
+        <num> ::= _ '7' <num>                                      <num> ::= ^ '7' <num>
+        <num> ::= _ '8' <num>                                      <num> ::= ^ '8' <num>
+        <num> ::= _ '9' <num>                                      <num> ::= ^ '9' <num>
+        <num> ::= _ '0' <num>                                      <num> ::= ^ '0' <num>
+        <num> ::= _ '1'                                            <num> ::= ^ '1'
+        <num> ::= _ '2'                                            <num> ::= ^ '2'
+        <num> ::= _ '3'                                            <num> ::= ^ '3'
+        <num> ::= _ '4'                                            <num> ::= ^ '4'
+        <num> ::= _ '5'                                            <num> ::= ^ '5'
+        <num> ::= _ '6'                                            <num> ::= ^ '6'
+        <num> ::= _ '7'                                            <num> ::= ^ '7'
+        <num> ::= _ '8'                                            <num> ::= ^ '8'
+        <num> ::= _ '9'                                            <num> ::= ^ '9'
+        <num> ::= _ '0'                                            <num> ::= ^ '0'
+
+        '0' s 5
+        '1' s 6
+        '2' s 7
+        '3' s 8
+        '4' s 9
+        '5' s 10
+        '6' s 11
+        '7' s 12
+        '8' s 13
+        '9' s 14
+        <num> g 37
+        (EOF) r 41
+        '-' r 41
+        '*' r 41
+        '/' r 41
+        '+' r 41
+        break r 41
+        return r 41
+
+
+State 15
+        Shift-Reduce Conflict
+
+        Prior States: 2, 15, 16, 17, 18, 19, 20, 21, 45, 46, 51, 62
+
+        <var> ::= a _ <var>                                        <var> ::= a ^ <var>
+    --> <var> ::= a _                                              <var> ::= a ^
+    --> <var> ::= _ a <var>                                        <var> ::= ^ a <var>
+    --> <var> ::= _ e <var>                                        <var> ::= ^ e <var>
+    --> <var> ::= _ i <var>                                        <var> ::= ^ i <var>
+    --> <var> ::= _ o <var>                                        <var> ::= ^ o <var>
+    --> <var> ::= _ u <var>                                        <var> ::= ^ u <var>
+    --> <var> ::= _ a                                              <var> ::= ^ a
+    --> <var> ::= _ e                                              <var> ::= ^ e
+    --> <var> ::= _ i                                              <var> ::= ^ i
+    --> <var> ::= _ o                                              <var> ::= ^ o
+    --> <var> ::= _ u                                              <var> ::= ^ u
+
+        a s 15
+        e s 16
+        i s 17
+        o s 19
+        u s 20
+        <var> g 38
+        (EOF) r 18
+        '-' r 18
+        '*' r 18
+        '/' r 18
+        '+' r 18
+        '<' r 18
+        '=' r 18
+        '==' r 18
+        '>' r 18
+        '0' r 18
+        '1' r 18
+        '2' r 18
+        '3' r 18
+        '4' r 18
+        '5' r 18
+        '6' r 18
+        '7' r 18
+        '8' r 18
+        '9' r 18
+        break r 18
+        continue r 18
+        if r 18
+        main r 18
+        return r 18
+        sizeof r 18
+        while r 18
+
+
+State 16
+        Shift-Reduce Conflict
+
+        Prior States: 2, 15, 16, 17, 18, 19, 20, 21, 45, 46, 51, 62
+
+        <var> ::= e _ <var>                                        <var> ::= e ^ <var>
+    --> <var> ::= e _                                              <var> ::= e ^
+    --> <var> ::= _ a <var>                                        <var> ::= ^ a <var>
+    --> <var> ::= _ e <var>                                        <var> ::= ^ e <var>
+    --> <var> ::= _ i <var>                                        <var> ::= ^ i <var>
+    --> <var> ::= _ o <var>                                        <var> ::= ^ o <var>
+    --> <var> ::= _ u <var>                                        <var> ::= ^ u <var>
+    --> <var> ::= _ a                                              <var> ::= ^ a
+    --> <var> ::= _ e                                              <var> ::= ^ e
+    --> <var> ::= _ i                                              <var> ::= ^ i
+    --> <var> ::= _ o                                              <var> ::= ^ o
+    --> <var> ::= _ u                                              <var> ::= ^ u
+
+        a s 15
+        e s 16
+        i s 17
+        o s 19
+        u s 20
+        <var> g 39
+        (EOF) r 19
+        '-' r 19
+        '*' r 19
+        '/' r 19
+        '+' r 19
+        '<' r 19
+        '=' r 19
+        '==' r 19
+        '>' r 19
+        '0' r 19
+        '1' r 19
+        '2' r 19
+        '3' r 19
+        '4' r 19
+        '5' r 19
+        '6' r 19
+        '7' r 19
+        '8' r 19
+        '9' r 19
+        break r 19
+        continue r 19
+        if r 19
+        main r 19
+        return r 19
+        sizeof r 19
+        while r 19
+
+
+State 17
+        Shift-Reduce Conflict
+
+        Prior States: 2, 15, 16, 17, 18, 19, 20, 21, 45, 46, 51, 62
+
+        <var> ::= i _ <var>                                        <var> ::= i ^ <var>
+    --> <var> ::= i _                                              <var> ::= i ^
+    --> <var> ::= _ a <var>                                        <var> ::= ^ a <var>
+    --> <var> ::= _ e <var>                                        <var> ::= ^ e <var>
+    --> <var> ::= _ i <var>                                        <var> ::= ^ i <var>
+    --> <var> ::= _ o <var>                                        <var> ::= ^ o <var>
+    --> <var> ::= _ u <var>                                        <var> ::= ^ u <var>
+    --> <var> ::= _ a                                              <var> ::= ^ a
+    --> <var> ::= _ e                                              <var> ::= ^ e
+    --> <var> ::= _ i                                              <var> ::= ^ i
+    --> <var> ::= _ o                                              <var> ::= ^ o
+    --> <var> ::= _ u                                              <var> ::= ^ u
+
+        a s 15
+        e s 16
+        i s 17
+        o s 19
+        u s 20
+        <var> g 40
+        (EOF) r 20
+        '-' r 20
+        '*' r 20
+        '/' r 20
+        '+' r 20
+        '<' r 20
+        '=' r 20
+        '==' r 20
+        '>' r 20
+        '0' r 20
+        '1' r 20
+        '2' r 20
+        '3' r 20
+        '4' r 20
+        '5' r 20
+        '6' r 20
+        '7' r 20
+        '8' r 20
+        '9' r 20
+        break r 20
+        continue r 20
+        if r 20
+        main r 20
+        return r 20
+        sizeof r 20
+        while r 20
+
+
+State 18
+        Prior States: 2, 45
+
+        <condicao> ::= if _ <exp2> <S> break else <S> break        <condicao> ::= if ^ <exp2> <S> break else <S> break
+        <exp2> ::= _ <var> <op2> <var>                             <exp2> ::= ^ <var> <op2> <var>
+        <var> ::= _ a <var>                                        <var> ::= ^ a <var>
+        <var> ::= _ e <var>                                        <var> ::= ^ e <var>
+        <var> ::= _ i <var>                                        <var> ::= ^ i <var>
+        <var> ::= _ o <var>                                        <var> ::= ^ o <var>
+        <var> ::= _ u <var>                                        <var> ::= ^ u <var>
+        <var> ::= _ a                                              <var> ::= ^ a
+        <var> ::= _ e                                              <var> ::= ^ e
+        <var> ::= _ i                                              <var> ::= ^ i
+        <var> ::= _ o                                              <var> ::= ^ o
+        <var> ::= _ u                                              <var> ::= ^ u
+
+        a s 15
+        e s 16
+        i s 17
+        o s 19
+        u s 20
+        <exp2> g 41
+        <var> g 42
+
+
+State 19
+        Shift-Reduce Conflict
+
+        Prior States: 2, 15, 16, 17, 18, 19, 20, 21, 45, 46, 51, 62
+
+        <var> ::= o _ <var>                                        <var> ::= o ^ <var>
+    --> <var> ::= o _                                              <var> ::= o ^
+    --> <var> ::= _ a <var>                                        <var> ::= ^ a <var>
+    --> <var> ::= _ e <var>                                        <var> ::= ^ e <var>
+    --> <var> ::= _ i <var>                                        <var> ::= ^ i <var>
+    --> <var> ::= _ o <var>                                        <var> ::= ^ o <var>
+    --> <var> ::= _ u <var>                                        <var> ::= ^ u <var>
+    --> <var> ::= _ a                                              <var> ::= ^ a
+    --> <var> ::= _ e                                              <var> ::= ^ e
+    --> <var> ::= _ i                                              <var> ::= ^ i
+    --> <var> ::= _ o                                              <var> ::= ^ o
+    --> <var> ::= _ u                                              <var> ::= ^ u
+
+        a s 15
+        e s 16
+        i s 17
+        o s 19
+        u s 20
+        <var> g 43
+        (EOF) r 21
+        '-' r 21
+        '*' r 21
+        '/' r 21
+        '+' r 21
+        '<' r 21
+        '=' r 21
+        '==' r 21
+        '>' r 21
+        '0' r 21
+        '1' r 21
+        '2' r 21
+        '3' r 21
+        '4' r 21
+        '5' r 21
+        '6' r 21
+        '7' r 21
+        '8' r 21
+        '9' r 21
+        break r 21
+        continue r 21
+        if r 21
+        main r 21
+        return r 21
+        sizeof r 21
+        while r 21
+
+
+State 20
+        Shift-Reduce Conflict
+
+        Prior States: 2, 15, 16, 17, 18, 19, 20, 21, 45, 46, 51, 62
+
+        <var> ::= u _ <var>                                        <var> ::= u ^ <var>
+    --> <var> ::= u _                                              <var> ::= u ^
+    --> <var> ::= _ a <var>                                        <var> ::= ^ a <var>
+    --> <var> ::= _ e <var>                                        <var> ::= ^ e <var>
+    --> <var> ::= _ i <var>                                        <var> ::= ^ i <var>
+    --> <var> ::= _ o <var>                                        <var> ::= ^ o <var>
+    --> <var> ::= _ u <var>                                        <var> ::= ^ u <var>
+    --> <var> ::= _ a                                              <var> ::= ^ a
+    --> <var> ::= _ e                                              <var> ::= ^ e
+    --> <var> ::= _ i                                              <var> ::= ^ i
+    --> <var> ::= _ o                                              <var> ::= ^ o
+    --> <var> ::= _ u                                              <var> ::= ^ u
+
+        a s 15
+        e s 16
+        i s 17
+        o s 19
+        u s 20
+        <var> g 44
+        (EOF) r 22
+        '-' r 22
+        '*' r 22
+        '/' r 22
+        '+' r 22
+        '<' r 22
+        '=' r 22
+        '==' r 22
+        '>' r 22
+        '0' r 22
+        '1' r 22
+        '2' r 22
+        '3' r 22
+        '4' r 22
+        '5' r 22
+        '6' r 22
+        '7' r 22
+        '8' r 22
+        '9' r 22
+        break r 22
+        continue r 22
+        if r 22
+        main r 22
+        return r 22
+        sizeof r 22
+        while r 22
+
+
+State 21
+        Prior States: 2, 45
+
+        <laco> ::= while _ <exp2> <exp1> return                    <laco> ::= while ^ <exp2> <exp1> return
+        <exp2> ::= _ <var> <op2> <var>                             <exp2> ::= ^ <var> <op2> <var>
+        <var> ::= _ a <var>                                        <var> ::= ^ a <var>
+        <var> ::= _ e <var>                                        <var> ::= ^ e <var>
+        <var> ::= _ i <var>                                        <var> ::= ^ i <var>
+        <var> ::= _ o <var>                                        <var> ::= ^ o <var>
+        <var> ::= _ u <var>                                        <var> ::= ^ u <var>
+        <var> ::= _ a                                              <var> ::= ^ a
+        <var> ::= _ e                                              <var> ::= ^ e
+        <var> ::= _ i                                              <var> ::= ^ i
+        <var> ::= _ o                                              <var> ::= ^ o
+        <var> ::= _ u                                              <var> ::= ^ u
+
+        a s 15
+        e s 16
+        i s 17
+        o s 19
+        u s 20
+        <exp2> g 45
+        <var> g 42
+
+
+State 22
+        Prior States: 2, 45
+
+        <exp1> ::= <condicao> _                                    <exp1> ::= <condicao> ^
+
+        (EOF) r 5
+        break r 5
+        return r 5
+
+
+State 23
+        Prior States: 2
+
+        <S> ::= main <exp1> _                                      <S> ::= main <exp1> ^
+
+        (EOF) r 0
+        break r 0
+
+
+State 24
+        Prior States: 2, 45
+
+        <exp1> ::= <laco> _                                        <exp1> ::= <laco> ^
+
+        (EOF) r 6
+        break r 6
+        return r 6
+
+
+State 25
+        Prior States: 2, 45, 46, 62
+
+        <operando> ::= <num> _                                     <operando> ::= <num> ^
+
+        (EOF) r 12
+        '-' r 12
+        '*' r 12
+        '/' r 12
+        '+' r 12
+        break r 12
+        return r 12
+
+
+State 26
+        Prior States: 2, 45
+
+        <exp1> ::= <operando> _                                    <exp1> ::= <operando> ^
+
+        (EOF) r 3
+        break r 3
+        return r 3
+
+
+State 27
+        Prior States: 2, 45
+
+        <exp1> ::= <var> _ '=' <operando> <op> <operando>          <exp1> ::= <var> ^ '=' <operando> <op> <operando>
+        <operando> ::= <var> _                                     <operando> ::= <var> ^
+
+        '=' s 46
+        (EOF) r 11
+        break r 11
+        return r 11
+
+
+State 28
+        Prior States: 5
+
+        <num> ::= '0' <num> _                                      <num> ::= '0' <num> ^
+
+        (EOF) r 32
+        '-' r 32
+        '*' r 32
+        '/' r 32
+        '+' r 32
+        break r 32
+        return r 32
+
+
+State 29
+        Prior States: 6
+
+        <num> ::= '1' <num> _                                      <num> ::= '1' <num> ^
+
+        (EOF) r 23
+        '-' r 23
+        '*' r 23
+        '/' r 23
+        '+' r 23
+        break r 23
+        return r 23
+
+
+State 30
+        Prior States: 7
+
+        <num> ::= '2' <num> _                                      <num> ::= '2' <num> ^
+
+        (EOF) r 24
+        '-' r 24
+        '*' r 24
+        '/' r 24
+        '+' r 24
+        break r 24
+        return r 24
+
+
+State 31
+        Prior States: 8
+
+        <num> ::= '3' <num> _                                      <num> ::= '3' <num> ^
+
+        (EOF) r 25
+        '-' r 25
+        '*' r 25
+        '/' r 25
+        '+' r 25
+        break r 25
+        return r 25
+
+
+State 32
+        Prior States: 9
+
+        <num> ::= '4' <num> _                                      <num> ::= '4' <num> ^
+
+        (EOF) r 26
+        '-' r 26
+        '*' r 26
+        '/' r 26
+        '+' r 26
+        break r 26
+        return r 26
+
+
+State 33
+        Prior States: 10
+
+        <num> ::= '5' <num> _                                      <num> ::= '5' <num> ^
+
+        (EOF) r 27
+        '-' r 27
+        '*' r 27
+        '/' r 27
+        '+' r 27
+        break r 27
+        return r 27
+
+
+State 34
+        Prior States: 11
+
+        <num> ::= '6' <num> _                                      <num> ::= '6' <num> ^
+
+        (EOF) r 28
+        '-' r 28
+        '*' r 28
+        '/' r 28
+        '+' r 28
+        break r 28
+        return r 28
+
+
+State 35
+        Prior States: 12
+
+        <num> ::= '7' <num> _                                      <num> ::= '7' <num> ^
+
+        (EOF) r 29
+        '-' r 29
+        '*' r 29
+        '/' r 29
+        '+' r 29
+        break r 29
+        return r 29
+
+
+State 36
+        Prior States: 13
+
+        <num> ::= '8' <num> _                                      <num> ::= '8' <num> ^
+
+        (EOF) r 30
+        '-' r 30
+        '*' r 30
+        '/' r 30
+        '+' r 30
+        break r 30
+        return r 30
+
+
+State 37
+        Prior States: 14
+
+        <num> ::= '9' <num> _                                      <num> ::= '9' <num> ^
+
+        (EOF) r 31
+        '-' r 31
+        '*' r 31
+        '/' r 31
+        '+' r 31
+        break r 31
+        return r 31
+
+
+State 38
+        Prior States: 15
+
+        <var> ::= a <var> _                                        <var> ::= a <var> ^
+
+        (EOF) r 13
+        '-' r 13
+        '*' r 13
+        '/' r 13
+        '+' r 13
+        '<' r 13
+        '=' r 13
+        '==' r 13
+        '>' r 13
+        '0' r 13
+        '1' r 13
+        '2' r 13
+        '3' r 13
+        '4' r 13
+        '5' r 13
+        '6' r 13
+        '7' r 13
+        '8' r 13
+        '9' r 13
+        a r 13
+        break r 13
+        continue r 13
+        e r 13
+        i r 13
+        if r 13
+        main r 13
+        o r 13
+        return r 13
+        sizeof r 13
+        u r 13
+        while r 13
+
+
+State 39
+        Prior States: 16
+
+        <var> ::= e <var> _                                        <var> ::= e <var> ^
+
+        (EOF) r 14
+        '-' r 14
+        '*' r 14
+        '/' r 14
+        '+' r 14
+        '<' r 14
+        '=' r 14
+        '==' r 14
+        '>' r 14
+        '0' r 14
+        '1' r 14
+        '2' r 14
+        '3' r 14
+        '4' r 14
+        '5' r 14
+        '6' r 14
+        '7' r 14
+        '8' r 14
+        '9' r 14
+        a r 14
+        break r 14
+        continue r 14
+        e r 14
+        i r 14
+        if r 14
+        main r 14
+        o r 14
+        return r 14
+        sizeof r 14
+        u r 14
+        while r 14
+
+
+State 40
+        Prior States: 17
+
+        <var> ::= i <var> _                                        <var> ::= i <var> ^
+
+        (EOF) r 15
+        '-' r 15
+        '*' r 15
+        '/' r 15
+        '+' r 15
+        '<' r 15
+        '=' r 15
+        '==' r 15
+        '>' r 15
+        '0' r 15
+        '1' r 15
+        '2' r 15
+        '3' r 15
+        '4' r 15
+        '5' r 15
+        '6' r 15
+        '7' r 15
+        '8' r 15
+        '9' r 15
+        a r 15
+        break r 15
+        continue r 15
+        e r 15
+        i r 15
+        if r 15
+        main r 15
+        o r 15
+        return r 15
+        sizeof r 15
+        u r 15
+        while r 15
+
+
+State 41
+        Prior States: 18
+
+        <condicao> ::= if <exp2> _ <S> break else <S> break        <condicao> ::= if <exp2> ^ <S> break else <S> break
+        <S> ::= _ main <exp1>                                      <S> ::= ^ main <exp1>
+        <S> ::= _ continue                                         <S> ::= ^ continue
+        <S> ::= _ sizeof                                           <S> ::= ^ sizeof
+
+        continue s 1
+        main s 2
+        sizeof s 3
+        <S> g 47
+
+
+State 42
+        Prior States: 18, 21
+
+        <exp2> ::= <var> _ <op2> <var>                             <exp2> ::= <var> ^ <op2> <var>
+        <op2> ::= _ '=='                                           <op2> ::= ^ '=='
+        <op2> ::= _ '<'                                            <op2> ::= ^ '<'
+        <op2> ::= _ '>'                                            <op2> ::= ^ '>'
+
+        '<' s 48
+        '==' s 49
+        '>' s 50
+        <op2> g 51
+
+
+State 43
+        Prior States: 19
+
+        <var> ::= o <var> _                                        <var> ::= o <var> ^
+
+        (EOF) r 16
+        '-' r 16
+        '*' r 16
+        '/' r 16
+        '+' r 16
+        '<' r 16
+        '=' r 16
+        '==' r 16
+        '>' r 16
+        '0' r 16
+        '1' r 16
+        '2' r 16
+        '3' r 16
+        '4' r 16
+        '5' r 16
+        '6' r 16
+        '7' r 16
+        '8' r 16
+        '9' r 16
+        a r 16
+        break r 16
+        continue r 16
+        e r 16
+        i r 16
+        if r 16
+        main r 16
+        o r 16
+        return r 16
+        sizeof r 16
+        u r 16
+        while r 16
+
+
+State 44
+        Prior States: 20
+
+        <var> ::= u <var> _                                        <var> ::= u <var> ^
+
+        (EOF) r 17
+        '-' r 17
+        '*' r 17
+        '/' r 17
+        '+' r 17
+        '<' r 17
+        '=' r 17
+        '==' r 17
+        '>' r 17
+        '0' r 17
+        '1' r 17
+        '2' r 17
+        '3' r 17
+        '4' r 17
+        '5' r 17
+        '6' r 17
+        '7' r 17
+        '8' r 17
+        '9' r 17
+        a r 17
+        break r 17
+        continue r 17
+        e r 17
+        i r 17
+        if r 17
+        main r 17
+        o r 17
+        return r 17
+        sizeof r 17
+        u r 17
+        while r 17
+
+
+State 45
+        Prior States: 21
+
+        <laco> ::= while <exp2> _ <exp1> return                    <laco> ::= while <exp2> ^ <exp1> return
+        <exp1> ::= _ <operando>                                    <exp1> ::= ^ <operando>
+        <exp1> ::= _ <var> '=' <operando> <op> <operando>          <exp1> ::= ^ <var> '=' <operando> <op> <operando>
+        <exp1> ::= _ <condicao>                                    <exp1> ::= ^ <condicao>
+        <exp1> ::= _ <laco>                                        <exp1> ::= ^ <laco>
+        <exp1> ::= _                                               <exp1> ::= ^
+        <condicao> ::= _ if <exp2> <S> break else <S> break        <condicao> ::= ^ if <exp2> <S> break else <S> break
+        <laco> ::= _ while <exp2> <exp1> return                    <laco> ::= ^ while <exp2> <exp1> return
+        <operando> ::= _ <var>                                     <operando> ::= ^ <var>
+        <operando> ::= _ <num>                                     <operando> ::= ^ <num>
+        <var> ::= _ a <var>                                        <var> ::= ^ a <var>
+        <var> ::= _ e <var>                                        <var> ::= ^ e <var>
+        <var> ::= _ i <var>                                        <var> ::= ^ i <var>
+        <var> ::= _ o <var>                                        <var> ::= ^ o <var>
+        <var> ::= _ u <var>                                        <var> ::= ^ u <var>
+        <var> ::= _ a                                              <var> ::= ^ a
+        <var> ::= _ e                                              <var> ::= ^ e
+        <var> ::= _ i                                              <var> ::= ^ i
+        <var> ::= _ o                                              <var> ::= ^ o
+        <var> ::= _ u                                              <var> ::= ^ u
+        <num> ::= _ '1' <num>                                      <num> ::= ^ '1' <num>
+        <num> ::= _ '2' <num>                                      <num> ::= ^ '2' <num>
+        <num> ::= _ '3' <num>                                      <num> ::= ^ '3' <num>
+        <num> ::= _ '4' <num>                                      <num> ::= ^ '4' <num>
+        <num> ::= _ '5' <num>                                      <num> ::= ^ '5' <num>
+        <num> ::= _ '6' <num>                                      <num> ::= ^ '6' <num>
+        <num> ::= _ '7' <num>                                      <num> ::= ^ '7' <num>
+        <num> ::= _ '8' <num>                                      <num> ::= ^ '8' <num>
+        <num> ::= _ '9' <num>                                      <num> ::= ^ '9' <num>
+        <num> ::= _ '0' <num>                                      <num> ::= ^ '0' <num>
+        <num> ::= _ '1'                                            <num> ::= ^ '1'
+        <num> ::= _ '2'                                            <num> ::= ^ '2'
+        <num> ::= _ '3'                                            <num> ::= ^ '3'
+        <num> ::= _ '4'                                            <num> ::= ^ '4'
+        <num> ::= _ '5'                                            <num> ::= ^ '5'
+        <num> ::= _ '6'                                            <num> ::= ^ '6'
+        <num> ::= _ '7'                                            <num> ::= ^ '7'
+        <num> ::= _ '8'                                            <num> ::= ^ '8'
+        <num> ::= _ '9'                                            <num> ::= ^ '9'
+        <num> ::= _ '0'                                            <num> ::= ^ '0'
+
+        '0' s 5
+        '1' s 6
+        '2' s 7
+        '3' s 8
+        '4' s 9
+        '5' s 10
+        '6' s 11
+        '7' s 12
+        '8' s 13
+        '9' s 14
+        a s 15
+        e s 16
+        i s 17
+        if s 18
+        o s 19
+        u s 20
+        while s 21
+        <condicao> g 22
+        <exp1> g 52
+        <laco> g 24
+        <num> g 25
+        <operando> g 26
+        <var> g 27
+        return r 7
+
+
+State 46
+        Prior States: 27
+
+        <exp1> ::= <var> '=' _ <operando> <op> <operando>          <exp1> ::= <var> '=' ^ <operando> <op> <operando>
+        <operando> ::= _ <var>                                     <operando> ::= ^ <var>
+        <operando> ::= _ <num>                                     <operando> ::= ^ <num>
+        <var> ::= _ a <var>                                        <var> ::= ^ a <var>
+        <var> ::= _ e <var>                                        <var> ::= ^ e <var>
+        <var> ::= _ i <var>                                        <var> ::= ^ i <var>
+        <var> ::= _ o <var>                                        <var> ::= ^ o <var>
+        <var> ::= _ u <var>                                        <var> ::= ^ u <var>
+        <var> ::= _ a                                              <var> ::= ^ a
+        <var> ::= _ e                                              <var> ::= ^ e
+        <var> ::= _ i                                              <var> ::= ^ i
+        <var> ::= _ o                                              <var> ::= ^ o
+        <var> ::= _ u                                              <var> ::= ^ u
+        <num> ::= _ '1' <num>                                      <num> ::= ^ '1' <num>
+        <num> ::= _ '2' <num>                                      <num> ::= ^ '2' <num>
+        <num> ::= _ '3' <num>                                      <num> ::= ^ '3' <num>
+        <num> ::= _ '4' <num>                                      <num> ::= ^ '4' <num>
+        <num> ::= _ '5' <num>                                      <num> ::= ^ '5' <num>
+        <num> ::= _ '6' <num>                                      <num> ::= ^ '6' <num>
+        <num> ::= _ '7' <num>                                      <num> ::= ^ '7' <num>
+        <num> ::= _ '8' <num>                                      <num> ::= ^ '8' <num>
+        <num> ::= _ '9' <num>                                      <num> ::= ^ '9' <num>
+        <num> ::= _ '0' <num>                                      <num> ::= ^ '0' <num>
+        <num> ::= _ '1'                                            <num> ::= ^ '1'
+        <num> ::= _ '2'                                            <num> ::= ^ '2'
+        <num> ::= _ '3'                                            <num> ::= ^ '3'
+        <num> ::= _ '4'                                            <num> ::= ^ '4'
+        <num> ::= _ '5'                                            <num> ::= ^ '5'
+        <num> ::= _ '6'                                            <num> ::= ^ '6'
+        <num> ::= _ '7'                                            <num> ::= ^ '7'
+        <num> ::= _ '8'                                            <num> ::= ^ '8'
+        <num> ::= _ '9'                                            <num> ::= ^ '9'
+        <num> ::= _ '0'                                            <num> ::= ^ '0'
+
+        '0' s 5
+        '1' s 6
+        '2' s 7
+        '3' s 8
+        '4' s 9
+        '5' s 10
+        '6' s 11
+        '7' s 12
+        '8' s 13
+        '9' s 14
+        a s 15
+        e s 16
+        i s 17
+        o s 19
+        u s 20
+        <num> g 25
+        <operando> g 53
+        <var> g 54
+
+
+State 47
+        Prior States: 41
+
+        <condicao> ::= if <exp2> <S> _ break else <S> break        <condicao> ::= if <exp2> <S> ^ break else <S> break
+
+        break s 55
+
+
+State 48
+        Prior States: 42
+
+        <op2> ::= '<' _                                            <op2> ::= '<' ^
+
+        a r 48
+        e r 48
+        i r 48
+        o r 48
+        u r 48
+
+
+State 49
+        Prior States: 42
+
+        <op2> ::= '==' _                                           <op2> ::= '==' ^
+
+        a r 47
+        e r 47
+        i r 47
+        o r 47
+        u r 47
+
+
+State 50
+        Prior States: 42
+
+        <op2> ::= '>' _                                            <op2> ::= '>' ^
+
+        a r 49
+        e r 49
+        i r 49
+        o r 49
+        u r 49
+
+
+State 51
+        Prior States: 42
+
+        <exp2> ::= <var> <op2> _ <var>                             <exp2> ::= <var> <op2> ^ <var>
+        <var> ::= _ a <var>                                        <var> ::= ^ a <var>
+        <var> ::= _ e <var>                                        <var> ::= ^ e <var>
+        <var> ::= _ i <var>                                        <var> ::= ^ i <var>
+        <var> ::= _ o <var>                                        <var> ::= ^ o <var>
+        <var> ::= _ u <var>                                        <var> ::= ^ u <var>
+        <var> ::= _ a                                              <var> ::= ^ a
+        <var> ::= _ e                                              <var> ::= ^ e
+        <var> ::= _ i                                              <var> ::= ^ i
+        <var> ::= _ o                                              <var> ::= ^ o
+        <var> ::= _ u                                              <var> ::= ^ u
+
+        a s 15
+        e s 16
+        i s 17
+        o s 19
+        u s 20
+        <var> g 56
+
+
+State 52
+        Prior States: 45
+
+        <laco> ::= while <exp2> <exp1> _ return                    <laco> ::= while <exp2> <exp1> ^ return
+
+        return s 57
+
+
+State 53
+        Prior States: 46
+
+        <exp1> ::= <var> '=' <operando> _ <op> <operando>          <exp1> ::= <var> '=' <operando> ^ <op> <operando>
+        <op> ::= _ '+'                                             <op> ::= ^ '+'
+        <op> ::= _ '-'                                             <op> ::= ^ '-'
+        <op> ::= _ '/'                                             <op> ::= ^ '/'
+        <op> ::= _ '*'                                             <op> ::= ^ '*'
+
+        '-' s 58
+        '*' s 59
+        '/' s 60
+        '+' s 61
+        <op> g 62
+
+
+State 54
+        Prior States: 46, 62
+
+        <operando> ::= <var> _                                     <operando> ::= <var> ^
+
+        (EOF) r 11
+        '-' r 11
+        '*' r 11
+        '/' r 11
+        '+' r 11
+        break r 11
+        return r 11
+
+
+State 55
+        Prior States: 47
+
+        <condicao> ::= if <exp2> <S> break _ else <S> break        <condicao> ::= if <exp2> <S> break ^ else <S> break
+
+        else s 63
+
+
+State 56
+        Prior States: 51
+
+        <exp2> ::= <var> <op2> <var> _                             <exp2> ::= <var> <op2> <var> ^
+
+        '0' r 8
+        '1' r 8
+        '2' r 8
+        '3' r 8
+        '4' r 8
+        '5' r 8
+        '6' r 8
+        '7' r 8
+        '8' r 8
+        '9' r 8
+        a r 8
+        continue r 8
+        e r 8
+        i r 8
+        if r 8
+        main r 8
+        o r 8
+        return r 8
+        sizeof r 8
+        u r 8
+        while r 8
+
+
+State 57
+        Prior States: 52
+
+        <laco> ::= while <exp2> <exp1> return _                    <laco> ::= while <exp2> <exp1> return ^
+
+        (EOF) r 10
+        break r 10
+        return r 10
+
+
+State 58
+        Prior States: 53
+
+        <op> ::= '-' _                                             <op> ::= '-' ^
+
+        '0' r 44
+        '1' r 44
+        '2' r 44
+        '3' r 44
+        '4' r 44
+        '5' r 44
+        '6' r 44
+        '7' r 44
+        '8' r 44
+        '9' r 44
+        a r 44
+        e r 44
+        i r 44
+        o r 44
+        u r 44
+
+
+State 59
+        Prior States: 53
+
+        <op> ::= '*' _                                             <op> ::= '*' ^
+
+        '0' r 46
+        '1' r 46
+        '2' r 46
+        '3' r 46
+        '4' r 46
+        '5' r 46
+        '6' r 46
+        '7' r 46
+        '8' r 46
+        '9' r 46
+        a r 46
+        e r 46
+        i r 46
+        o r 46
+        u r 46
+
+
+State 60
+        Prior States: 53
+
+        <op> ::= '/' _                                             <op> ::= '/' ^
+
+        '0' r 45
+        '1' r 45
+        '2' r 45
+        '3' r 45
+        '4' r 45
+        '5' r 45
+        '6' r 45
+        '7' r 45
+        '8' r 45
+        '9' r 45
+        a r 45
+        e r 45
+        i r 45
+        o r 45
+        u r 45
+
+
+State 61
+        Prior States: 53
+
+        <op> ::= '+' _                                             <op> ::= '+' ^
+
+        '0' r 43
+        '1' r 43
+        '2' r 43
+        '3' r 43
+        '4' r 43
+        '5' r 43
+        '6' r 43
+        '7' r 43
+        '8' r 43
+        '9' r 43
+        a r 43
+        e r 43
+        i r 43
+        o r 43
+        u r 43
+
+
+State 62
+        Prior States: 53
+
+        <exp1> ::= <var> '=' <operando> <op> _ <operando>          <exp1> ::= <var> '=' <operando> <op> ^ <operando>
+        <operando> ::= _ <var>                                     <operando> ::= ^ <var>
+        <operando> ::= _ <num>                                     <operando> ::= ^ <num>
+        <var> ::= _ a <var>                                        <var> ::= ^ a <var>
+        <var> ::= _ e <var>                                        <var> ::= ^ e <var>
+        <var> ::= _ i <var>                                        <var> ::= ^ i <var>
+        <var> ::= _ o <var>                                        <var> ::= ^ o <var>
+        <var> ::= _ u <var>                                        <var> ::= ^ u <var>
+        <var> ::= _ a                                              <var> ::= ^ a
+        <var> ::= _ e                                              <var> ::= ^ e
+        <var> ::= _ i                                              <var> ::= ^ i
+        <var> ::= _ o                                              <var> ::= ^ o
+        <var> ::= _ u                                              <var> ::= ^ u
+        <num> ::= _ '1' <num>                                      <num> ::= ^ '1' <num>
+        <num> ::= _ '2' <num>                                      <num> ::= ^ '2' <num>
+        <num> ::= _ '3' <num>                                      <num> ::= ^ '3' <num>
+        <num> ::= _ '4' <num>                                      <num> ::= ^ '4' <num>
+        <num> ::= _ '5' <num>                                      <num> ::= ^ '5' <num>
+        <num> ::= _ '6' <num>                                      <num> ::= ^ '6' <num>
+        <num> ::= _ '7' <num>                                      <num> ::= ^ '7' <num>
+        <num> ::= _ '8' <num>                                      <num> ::= ^ '8' <num>
+        <num> ::= _ '9' <num>                                      <num> ::= ^ '9' <num>
+        <num> ::= _ '0' <num>                                      <num> ::= ^ '0' <num>
+        <num> ::= _ '1'                                            <num> ::= ^ '1'
+        <num> ::= _ '2'                                            <num> ::= ^ '2'
+        <num> ::= _ '3'                                            <num> ::= ^ '3'
+        <num> ::= _ '4'                                            <num> ::= ^ '4'
+        <num> ::= _ '5'                                            <num> ::= ^ '5'
+        <num> ::= _ '6'                                            <num> ::= ^ '6'
+        <num> ::= _ '7'                                            <num> ::= ^ '7'
+        <num> ::= _ '8'                                            <num> ::= ^ '8'
+        <num> ::= _ '9'                                            <num> ::= ^ '9'
+        <num> ::= _ '0'                                            <num> ::= ^ '0'
+
+        '0' s 5
+        '1' s 6
+        '2' s 7
+        '3' s 8
+        '4' s 9
+        '5' s 10
+        '6' s 11
+        '7' s 12
+        '8' s 13
+        '9' s 14
+        a s 15
+        e s 16
+        i s 17
+        o s 19
+        u s 20
+        <num> g 25
+        <operando> g 64
+        <var> g 54
+
+
+State 63
+        Prior States: 55
+
+        <condicao> ::= if <exp2> <S> break else _ <S> break        <condicao> ::= if <exp2> <S> break else ^ <S> break
+        <S> ::= _ main <exp1>                                      <S> ::= ^ main <exp1>
+        <S> ::= _ continue                                         <S> ::= ^ continue
+        <S> ::= _ sizeof                                           <S> ::= ^ sizeof
+
+        continue s 1
+        main s 2
+        sizeof s 3
+        <S> g 65
+
+
+State 64
+        Prior States: 62
+
+        <exp1> ::= <var> '=' <operando> <op> <operando> _          <exp1> ::= <var> '=' <operando> <op> <operando> ^
+
+        (EOF) r 4
+        break r 4
+        return r 4
+
+
+State 65
+        Prior States: 63
+
+        <condicao> ::= if <exp2> <S> break else <S> _ break        <condicao> ::= if <exp2> <S> break else <S> ^ break
+
+        break s 66
+
+
+State 66
+        Prior States: 65
+
+        <condicao> ::= if <exp2> <S> break else <S> break _        <condicao> ::= if <exp2> <S> break else <S> break ^
+
+        (EOF) r 9
+        break r 9
+        return r 9
+
+
+
+
+========================================
+System Log
+========================================
+
+Grammar        Success           The grammar was successfully analyzed
+LALR States    Warning   15      A Shift-Reduce Conflict was fixed
+LALR States    Warning   15      A Shift-Reduce Conflict was fixed
+LALR States    Warning   15      A Shift-Reduce Conflict was fixed
+LALR States    Warning   15      A Shift-Reduce Conflict was fixed
+LALR States    Warning   15      A Shift-Reduce Conflict was fixed
+LALR States    Warning   16      A Shift-Reduce Conflict was fixed
+LALR States    Warning   16      A Shift-Reduce Conflict was fixed
+LALR States    Warning   16      A Shift-Reduce Conflict was fixed
+LALR States    Warning   16      A Shift-Reduce Conflict was fixed
+LALR States    Warning   16      A Shift-Reduce Conflict was fixed
+LALR States    Warning   17      A Shift-Reduce Conflict was fixed
+LALR States    Warning   17      A Shift-Reduce Conflict was fixed
+LALR States    Warning   17      A Shift-Reduce Conflict was fixed
+LALR States    Warning   17      A Shift-Reduce Conflict was fixed
+LALR States    Warning   17      A Shift-Reduce Conflict was fixed
+LALR States    Warning   19      A Shift-Reduce Conflict was fixed
+LALR States    Warning   19      A Shift-Reduce Conflict was fixed
+LALR States    Warning   19      A Shift-Reduce Conflict was fixed
+LALR States    Warning   19      A Shift-Reduce Conflict was fixed
+LALR States    Warning   19      A Shift-Reduce Conflict was fixed
+LALR States    Warning   20      A Shift-Reduce Conflict was fixed
+LALR States    Warning   20      A Shift-Reduce Conflict was fixed
+LALR States    Warning   20      A Shift-Reduce Conflict was fixed
+LALR States    Warning   20      A Shift-Reduce Conflict was fixed
+LALR States    Warning   20      A Shift-Reduce Conflict was fixed
+LALR States    Success           LALR Table was succesfully created
+DFA States     Success           The DFA State Table was successfully created
+
+
